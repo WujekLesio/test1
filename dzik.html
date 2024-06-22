@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trzybębnowa Maszyna Hazardowa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin-top: 50px;
+        }
+        .reels {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+        .reel {
+            font-size: 2em;
+            margin: 0 10px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border: 2px solid #000;
+            border-radius: 5px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trzybębnowa Maszyna Hazardowa</h1>
+    <div class="reels" id="reels">
+        <div class="reel" id="reel1">-</div>
+        <div class="reel" id="reel2">-</div>
+        <div class="reel" id="reel3">-</div>
+    </div>
+    <button class="button" onclick="spinReels()">Zakręć</button>
+    <div id="result"></div>
+
+    <script>
+        function spinReel() {
+            return Math.floor(Math.random() * 7) + 1; // Losuje liczbę od 1 do 7
+        }
+
+        function spinReels() {
+            const reel1 = spinReel();
+            const reel2 = spinReel();
+            const reel3 = spinReel();
+
+            document.getElementById('reel1').innerText = reel1;
+            document.getElementById('reel2').innerText = reel2;
+            document.getElementById('reel3').innerText = reel3;
+
+            if (reel1 === reel2 && reel1 === reel3) {
+                document.getElementById('result').innerText = "Gratulacje! Wygrałeś!";
+            } else {
+                document.getElementById('result').innerText = "Przykro mi, spróbuj ponownie.";
+            }
+        }
+    </script>
+</body>
+</html>
